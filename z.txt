@@ -1,0 +1,9 @@
+procesar_sentencia_simplificada( False, False, False)    
+procesar_sentencia_simplificada( False, False, True)    
+procesar_sentencia_simplificada( False, True,  False)    
+procesar_sentencia_simplificada( False, True, True)    
+procesar_sentencia_simplificada( True, False, False)    
+procesar_sentencia_simplificada( True, False, True)    
+procesar_sentencia_simplificada( True, True, False)    
+procesar_sentencia_simplificada( True, True, True)    
+

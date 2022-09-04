@@ -1,0 +1,48 @@
+# a. Escribir una función de nombre:
+# palabra_no_tiene_letras(palabra, letras_prohibidas)
+# la cual retorne True si es que los caracteres que componen
+# una palabra no se encuentran en una lista de caracteres prohibidos.'
+
+import re
+
+
+# def regex_method(to_search, to_be_searched):
+
+def palabra_no_tiene_letras(palabra, letras_prohibidas):
+   word = re.compile(r'(\b(?:' + r'|'.join(letras_prohibidas) + r')\b(?:\n)?)')
+   print(word)
+   blob = '\n'.join(palabras)
+
+   print( blob)
+   phrases = word.findall(blob)
+   return [phrase.split(' ') for phrase in ' '.join(phrases).split('\n ')]
+   
+
+#prohibidas = ["^", "&", "!", "%", "~"]
+prohibidas = re.compile(r'(\b(?:' + r'|'.join("^", "&", "!", "%", "~") + r')\b(?:\n)?)')
+
+palabras = [
+    "apéndice",
+    "l^sta",
+    "espec^fica",
+    "palabras",
+    "ni~o",
+    "b%sicas",
+    "vocabulario",
+    "general",
+    "Sustantivos",
+    "Gente",
+    "humanidad",
+    "humano",
+    "persona",
+    "gente"]
+
+
+print(type(palabras))
+print(type(prohibidas))
+print("".join(prohibidas))
+
+for p in palabras:
+    print( palabra_no_tiene_letras(p, prohibidas))
+
+
