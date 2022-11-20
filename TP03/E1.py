@@ -8,8 +8,10 @@ class Monstruo:
         self.nombre = nom
         self.especie = esp
         self.energia = Monstruo.maxEnergia
-        self.estadoDormido = False
-    
+        self.estadoDormido = False  
+        ''' 1.a '''
+
+    ''' << COMANDOS >>'''
     def establecerNombre(self, nom):
         self.nombre = nom
 
@@ -17,17 +19,23 @@ class Monstruo:
         self.especie = esp
 
     def establecerEnergia(self, ene):
-        self.energia = ene
+        if ene in range(0,self.maxEnergia + 1):
+           self.energia = ene
+           
 
     def establecerEstadoDormido(self, est):
         self.estadoDormido = est
 
     def asustar(self, hum: Humano):
-        hum.establecerEstadoAsustado(True)
-        if self.energia - 10 < 0:
-            self.energia = 0
-        else:
-            self.energia -= 10
+        if hum != None and isinstance(hum, Humano) \
+            and not self.estadoDormido and not hum.obtenerEstadoAsustado():       
+            '''1.d.i '''
+            hum.establecerEstadoAsustado(True)
+            if self.energia - 10 < 0:                               
+                self.energia = 0                                
+            else:
+                self.energia -= 10
+            '''1.d.ii'''
 
     def divertir(self, hum: Humano):
         hum.establecerEstadoAsustado(False)
@@ -35,17 +43,22 @@ class Monstruo:
             self.energia = 0
         else:
             self.energia -= 20
+        '''1.d.ii'''
 
     def dormir(self):
-        self.estadoDormido = True
-        if self.energia > Monstruo.maxEnergia + 15:
-            self.energia = Monstruo.maxEnergia
-        else:
-            self.energia += 15
+        if self.energia <= self.maxEnergia:                                 
+            '''1.b_i'''
+            self.estadoDormido = True   
+            if self.energia > Monstruo.maxEnergia + 15:
+                self.energia = Monstruo.maxEnergia
+            else:
+                self.energia += 15
 
     def despertar(self):
         self.estadoDormido = False
-
+        '''1.c'''
+        
+    '''<< CONSULTAS >>'''
     def obtenerNombre(self):
         return self.nombre
 

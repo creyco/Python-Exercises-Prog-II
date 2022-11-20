@@ -30,3 +30,28 @@ class MonstersInc:
 
     def obtenerHumanos(self):
         return self.humanos
+
+class TesterMonstersInc:
+    def main(self):
+        opc = 2
+        if opc == 1:
+            monstruo1 = Monstruo('bobi', 'lobizon')
+            monstersInc = MonstersInc
+            monstersInc.agregarMonstruo()
+        else:
+            # esta lista no hay q hacerla a mano
+            humano1 = Humano('Cris')
+            humano2 = Humano('Marga')
+            humanos = [humano1, humano2]
+            humano1.establecerEstadoAsustado(True)
+            humano2.establecerEstadoAsustado(True)
+            humanos_asustados = []            
+            #print(humanos)
+            for hum in humanos:
+                if hum.obtenerEstadoAsustado():
+                    humanos_asustados.append(hum)
+                print(humanos_asustados)
+                
+if __name__=='__main__':
+    testerMonstersInc = TesterMonstersInc()
+    testerMonstersInc.main() 
