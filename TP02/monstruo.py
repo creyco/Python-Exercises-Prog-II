@@ -1,4 +1,4 @@
-#from humano import Humano
+from humano import Humano
 
 class Monstruo:
     # << atributos de clase >>
@@ -22,15 +22,30 @@ class Monstruo:
     def establecerEnergia(self, ene):
         self.energia = ene
     
-    def asustar(self, humano):     
-        self.estadoAsustado = True           
-        self.energia -= 10        
-        return humano.establecerEstadoAsustado(self.estadoAsustado)
+    # def asustar(self, humano):     
+    #     self.estadoAsustado = True           
+    #     self.energia -= 10        
+    #     return humano.establecerEstadoAsustado(self.estadoAsustado)
+
+    def asustar(self, hum: Humano):
+        if not self.estadoDormido and not hum.estadoAsustado:
+            hum.establecerEstadoAsustado(True)
+            if self.energia - 10 < 0:
+                self.energia = 0
+            else:
+                self.energia -= 10
     
-    def divertir(self, humano):
-        self.estadoAsustado = False
-        self.energia -= 20  
-        return humano.establecerEstadoAsustado(self.estadoAsustado)     
+    # def divertir(self, humano):
+    #     self.estadoAsustado = False
+    #     self.energia -= 20  
+    #     return humano.establecerEstadoAsustado(self.estadoAsustado)     
+
+    def divertir(self, hum: Humano):
+        hum.establecerEstadoAsustado(False)
+        if self.energia - 20 < 0:
+            self.energia = 0
+        else:
+            self.energia -= 20
 
     #<<CONSULTAS>>
 
@@ -43,6 +58,9 @@ class Monstruo:
     def obtenerEnergia(self):
         return self.energia
    
+    def equals(self, mon):
+        return self.nombre == mon.obtenerNombre() and self.especie == mon.obtenerEspecie()
+
     def __str__(self):
         return self.nombre + ' ' + self.especie + ' ' + str(self.energia) 
 

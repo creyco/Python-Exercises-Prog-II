@@ -24,9 +24,12 @@ class MonstersInc:
         self.humanos.append(hum)       
         
     def eliminarMonstruo(self, mon: Monstruo):
-        for m in self.monstruos:            
-            if m == mon:
-                self.monstruos.remove(m)
+        for m in self.monstruos:    
+            if monstruo.equals(mon):
+                self.monstruos.remove(Monstruo)
+                break            
+            # if m == mon:
+            #     self.monstruos.remove(m)
         
     def eliminarHumano(self, hum: Humano):
         for m in self.humanos:
